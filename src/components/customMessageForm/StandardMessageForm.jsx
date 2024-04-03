@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MessageFormUi from "./MessageFormUi";
+import MessageFormUI from "./MessageFormUi";
 
 const StandardMessageForm = ({ props, activeChat }) => {
   const [message, setMessage] = useState("");
@@ -27,11 +27,11 @@ const StandardMessageForm = ({ props, activeChat }) => {
   };
 
   return (
-    <MessageFormUi
+    <MessageFormUI
       setAttachment={setAttachment}
+      message={message}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
-      message={message}
     />
   );
 };

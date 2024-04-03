@@ -1,24 +1,27 @@
 import {
+  PaperAirplaneIcon,
   PaperClipIcon,
   XMarkIcon,
-  PaperAirplaneIcon,
 } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import Dropzone from "react-dropzone";
 
-const MessageFormUi = ({
+const MessageFormUI = ({
   setAttachment,
   message,
   handleChange,
   handleSubmit,
+  appendText,
+  handleKeyDown,
 }) => {
   const [preview, setPreview] = useState("");
+
   return (
     <div className="message-form-container">
       {preview && (
         <div className="message-form-preview">
           <img
-            alt="message-form-preview-image"
+            alt="message-form-preview"
             className="message-form-preview-image"
             src={preview}
             onLoad={() => URL.revokeObjectURL(preview)}
@@ -39,8 +42,17 @@ const MessageFormUi = ({
             type="text"
             value={message}
             onChange={handleChange}
-            placeholder="Send a Message..."
+            onKeyDown={handleKeyDown}
+            placeholder="Send a message..."
           />
+          {appendText && (
+            <input
+              className="message-form-assist"
+              type="text"
+              disabled="disabled"
+              value={`${message} ${appendText}`}
+            />
+          )}
         </div>
         <div className="message-form-icons">
           <Dropzone
@@ -62,6 +74,7 @@ const MessageFormUi = ({
               </div>
             )}
           </Dropzone>
+
           <hr className="vertical-line" />
           <PaperAirplaneIcon
             className="message-form-icon-airplane"
@@ -76,4 +89,4 @@ const MessageFormUi = ({
   );
 };
 
-export default MessageFormUi;
+export default MessageFormUI;
