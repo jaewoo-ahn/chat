@@ -1,4 +1,4 @@
-import { usePostAiCodeMutation } from "@/state/api";
+import { usePostAiCodeMutation } from "../../state/api";
 import { useState } from "react";
 import MessageFormUI from "./MessageFormUi";
 
